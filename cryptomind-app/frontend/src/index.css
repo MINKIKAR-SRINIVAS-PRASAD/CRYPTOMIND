@@ -1,0 +1,131 @@
+/* ── ROOT VARIABLES ── */
+:root {
+  --bg:        #080c14;
+  --bg2:       #0d1220;
+  --bg3:       #111827;
+  --card:      #0f1729;
+  --card2:     #131e35;
+  --border:    rgba(255,255,255,0.06);
+  --border2:   rgba(255,255,255,0.10);
+  --green:     #00e676;
+  --green-dim: rgba(0,230,118,0.12);
+  --red:       #ff3d57;
+  --red-dim:   rgba(255,61,87,0.12);
+  --blue:      #3b82f6;
+  --blue-dim:  rgba(59,130,246,0.15);
+  --blue2:     #1d4ed8;
+  --gold:      #f59e0b;
+  --text:      #e2e8f0;
+  --text2:     #94a3b8;
+  --text3:     #475569;
+  --mono:      'Space Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --glow-b:    0 0 20px rgba(59,130,246,0.25);
+  --glow-g:    0 0 20px rgba(0,230,118,0.2);
+  --glow-r:    0 0 20px rgba(255,61,87,0.2);
+  --sidebar-w: 240px;
+  --topbar-h:  65px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+/* RESET */
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
+input, select, textarea { font-family: 'DM Sans', sans-serif; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.05); opacity: .7; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes tickUp {
+  0%   { transform: translateY(0); opacity: 1; }
+  50%  { transform: translateY(-4px); opacity: .5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* PRICE TICK */
+.price-tick { animation: tickUp .4s ease; }
+
+/* AI LIVE */
+.ai-live {
+  background: linear-gradient(90deg, var(--blue), var(--green), var(--blue));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 3s linear infinite;
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+/* SKELETON LOADING */
+.skeleton {
+  background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* UTILITY CLASSES */
+.up { color: var(--green); }
+.down { color: var(--red); }
+.mono { font-family: 'Space Mono', monospace; }
+
+/* APP LAYOUT */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+  .main-content { margin-left: 0; }
+}
