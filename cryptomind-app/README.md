@@ -62,7 +62,6 @@ cd cryptomind-app
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env with your credentials
 npm install
 npm run dev
 ```
@@ -81,12 +80,6 @@ npm start
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/cryptomind
-JWT_SECRET=your_super_secret_key
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_gmail_app_password
-OPENAI_API_KEY=sk-your-key  # Optional, for enhanced AI
 CLIENT_URL=http://localhost:3000
 ```
 
@@ -195,7 +188,6 @@ Each agent votes BUY/SELL/HOLD with a confidence score. The Judge aggregates all
 
 1. Enable 2-Factor Authentication on Gmail
 2. Generate App Password: Google Account → Security → App Passwords
-3. Add to `.env`: `EMAIL_USER=your@gmail.com`, `EMAIL_PASS=your_app_password`
 
 ---
 
@@ -229,9 +221,5 @@ Without email configured, OTP is displayed in:
 | GET | `/api/notifications` | Get notifications |
 
 ---
-
-## 🙏 Credits
-
-Built with ❤️ for the CryptoMind AI Trading Platform Challenge.
 
 Data provided by [Binance API](https://binance-docs.github.io/apidocs/).
